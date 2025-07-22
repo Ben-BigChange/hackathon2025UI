@@ -1,0 +1,80 @@
+module.exports = {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          blue: "#086DFF",
+          midblue: "#AADFF5",
+          paleblue: "#D8F3FF",
+          greyblue: "#EFF6FA",
+          midnightblue: "#0B2642",
+          midnightbluesubtle: "#73777D",
+          offwhite: "#F4F4F4",
+          white: "#FFFFFF",
+          ecogreen: "#28E289",
+          goldenyellow: "#FFCA11",
+          sunsetorange: "#FF6B00",
+        },
+        goldenyellow: "#FFCA11",
+        black: "#09192B",
+        grey: {
+          0: "#FFFFFF",
+          25: "#F9FAFD",
+          50: "#F8F9FC",
+          100: "#F4F5FA",
+          200: "#E5E7F0",
+          300: "#D1D4E1",
+          400: "#B3B7C9",
+          500: "#9195AD",
+          600: "#6B6F89",
+          700: "#4B4E66",
+          800: "#2F3147",
+          900: "#1A1C2E",
+        },
+        blue: {
+          600: "#0288D1",
+          50: "#E6F3FA",
+          900: "#01579B",
+          1000: "#082E49",
+        },
+        green: {
+          600: "#2E7D32",
+          50: "#EDF7ED",
+          900: "#1B5E20",
+        },
+        red: {
+          600: "#D32F2F",
+          50: "#FDF5F5",
+          900: "#C62828",
+        },
+        orange: {
+          600: "#F59200",
+          700: "#DD8300",
+          50: "#FFF5E5",
+          900: "#B26200",
+        },
+        teal: {
+          600: "#1D9AAA",
+          700: "#1D7F8C",
+        },
+        purple: {
+          50: "#EDE7F6",
+          500: "#8F7EE7",
+          600: "#7C5AE2",
+          800: "#5E4DB2",
+          900: "#352C63",
+        },
+        magenta: {
+          800: "#943D73",
+          900: "#50253F",
+          1000: "#421F34",
+        },
+      },
+    },
+  },
+  plugins: [],
+}; 
