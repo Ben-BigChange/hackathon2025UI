@@ -2,6 +2,7 @@ import React from "react";
 import { FaUser, FaRobot } from "react-icons/fa";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { mapIdsToMarkdownLink } from "../utils/mapIdsToMarkdownLink";
 
 interface ChatMessageProps {
   sender: "user" | "bot";
@@ -26,7 +27,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ sender, text }) => (
           : "bg-grey-100 text-brand-blue rounded-bl-none"
       }`}
     >
-      <Markdown remarkPlugins={[remarkGfm]}>{text}</Markdown>
+      <Markdown remarkPlugins={[remarkGfm]}>{mapIdsToMarkdownLink(text)}</Markdown>
     </div>
     {sender === "user" && (
       <div className="w-8 h-8 rounded-full bg-brand-blue flex items-center justify-center text-white flex-shrink-0">

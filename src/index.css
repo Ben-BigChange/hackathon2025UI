@@ -4,10 +4,6 @@
   --brand-blue: #086DFF;
 }
 
-a {
-  color: var(--brand-blue);
-}
-
 .typing-indicator {
   display: inline-block;
 }
@@ -31,4 +27,19 @@ a {
   60% {
     color: #b3d4ff;
   }
+}
+/* Custom styles can go below */
+a {
+    color: #086DFF;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+table {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+th, td {
+    padding-inline: 0.25rem;
 }
