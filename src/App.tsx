@@ -1,15 +1,16 @@
 import { useState, useRef, useEffect } from "react";
+import { CHATBOT_API_URL } from "./constants";
 import ChatHeader from "./components/ChatHeader";
 import ChatMessages from "./components/ChatMessages";
 import ChatInput from "./components/ChatInput";
 
 function App() {
-  const [messages, setMessages] = useState<{
-    sender: "user" | "bot";
-    text: string;
-  }[]>([
-    { sender: "bot", text: "Hi! How can I help you today?" },
-  ]);
+  const [messages, setMessages] = useState<
+    {
+      sender: "user" | "bot";
+      text: string;
+    }[]
+  >([{ sender: "bot", text: "Hi! How can I help you today?" }]);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -17,15 +18,32 @@ function App() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (!input.trim()) return;
-    setMessages((msgs) => [
-      ...msgs,
-      { sender: "user", text: input },
-      // Placeholder bot response
-      { sender: "bot", text: "I'm just a UI for now!" },
-    ]);
+    // Add user message
+    setMessages((msgs) => [...msgs, { sender: "user", text: input }]);
+    const userInput = input;
     setInput("");
+    try {
+      const res = await fetch(CHATBOT_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: userInput }),
+      });
+      const data = await res.json();
+      setMessages((msgs) => [
+        ...msgs,
+        { sender: "bot", text: data.response || "No response from bot." },
+      ]);
+    } catch {
+      setMessages((msgs) => [
+        ...msgs,
+        {
+          sender: "bot",
+          text: "Sorry, there was an error contacting the bot.",
+        },
+      ]);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

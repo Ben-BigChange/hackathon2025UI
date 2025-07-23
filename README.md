@@ -1,3 +1,61 @@
+# Chat Bot UI
+
+## Setup Instructions
+
+1. **Clone the repository**
+
+   ```sh
+   git clone <your-repo-url>
+   cd chat-bot-ui
+   ```
+
+2. **Install dependencies**
+
+   ```sh
+   npm install
+   ```
+
+3. **Configure environment variables**
+
+   Create a `.env` file in the project root with the following content:
+
+   ```env
+   VITE_CHATBOT_API_URL=https://your-endpoint-url.com/api/chat
+   ```
+   Replace the URL with your actual endpoint.
+
+4. **Start the development server**
+
+   ```sh
+   npm run dev
+   ```
+
+5. **Open the app**
+
+   Visit [http://localhost:5173](http://localhost:5173) in your browser.
+
+---
+
+### Environment Variables
+- `VITE_CHATBOT_API_URL`: The endpoint for the chatbot API. Must return `{ "response": "The bots response" }` for a POST request with `{ "prompt": "USERS MESSAGE" }`.
+
+---
+
+### Project Structure
+- `src/constants.ts`: Exports the chatbot API URL from the environment variable.
+- `src/App.tsx`: Main app logic.
+
+---
+
+### Tech Stack
+- React + Vite
+- Tailwind CSS
+
+---
+
+### Customization
+- Update the endpoint in `.env` as needed.
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
