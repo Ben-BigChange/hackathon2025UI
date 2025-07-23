@@ -23,8 +23,18 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({
       <ChatMessage key={idx} sender={msg.sender} text={msg.text} />
     ))}
     {isThinking && (
-      <div className="flex items-center text-gray-500 m-2">
-        <span>Bot is thinking...</span>
+      <div className="flex items-center m-2">
+        <span className="typing-indicator">
+          {"Bot is thinking...".split("").map((char, i) => (
+            <span
+              key={i}
+              className="typing-char"
+              style={{ animationDelay: `${i * 0.07}s` }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
+        </span>
       </div>
     )}
     <div ref={messagesEndRef} />

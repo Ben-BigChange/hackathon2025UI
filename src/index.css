@@ -1,3 +1,34 @@
 @import "tailwindcss";
 
-/* Custom styles can go below */
+:root {
+  --brand-blue: #086DFF;
+}
+
+a {
+  color: var(--brand-blue);
+}
+
+.typing-indicator {
+  display: inline-block;
+}
+
+.typing-char {
+  display: inline-block;
+  color: #b3d4ff;
+  animation: ripple-color 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes ripple-color {
+  0%, 100% {
+    color: #b3d4ff;
+  }
+  20% {
+    color: #086DFF;
+  }
+  40% {
+    color: #0B2642;
+  }
+  60% {
+    color: #b3d4ff;
+  }
+}
