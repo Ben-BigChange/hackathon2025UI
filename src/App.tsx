@@ -28,12 +28,12 @@ function App() {
       const res = await fetch(CHATBOT_API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: userInput }),
+        body: JSON.stringify({ prompt: userInput, session_id: "12345" }),
       });
       const data = await res.json();
       setMessages((msgs) => [
         ...msgs,
-        { sender: "bot", text: data.response || "No response from bot." },
+        { sender: "bot", text: data.result || "No response from bot." },
       ]);
     } catch {
       setMessages((msgs) => [

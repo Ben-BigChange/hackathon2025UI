@@ -1,5 +1,7 @@
 import React from "react";
 import { FaUser, FaRobot } from "react-icons/fa";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface ChatMessageProps {
   sender: "user" | "bot";
@@ -7,7 +9,11 @@ interface ChatMessageProps {
 }
 
 const ChatMessage: React.FC<ChatMessageProps> = ({ sender, text }) => (
-  <div className={`flex items-end gap-2 ${sender === "user" ? "justify-end" : "justify-start"}`}>
+  <div
+    className={`flex items-end gap-2 ${
+      sender === "user" ? "justify-end" : "justify-start"
+    }`}
+  >
     {sender === "bot" && (
       <div className="w-8 h-8 rounded-full bg-brand-sunsetorange flex items-center justify-center text-white flex-shrink-0">
         <FaRobot color="#7C5AE2" />
@@ -20,7 +26,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ sender, text }) => (
           : "bg-grey-100 text-brand-blue rounded-bl-none"
       }`}
     >
-      {text}
+      <Markdown remarkPlugins={[remarkGfm]}>{text}</Markdown>
     </div>
     {sender === "user" && (
       <div className="w-8 h-8 rounded-full bg-brand-blue flex items-center justify-center text-white flex-shrink-0">
@@ -30,4 +36,4 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ sender, text }) => (
   </div>
 );
 
-export default ChatMessage; 
+export default ChatMessage;
