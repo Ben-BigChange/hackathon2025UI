@@ -11,6 +11,6 @@ export const mapIdsToMarkdownLink = (text: string): string => {
       return `[${id}](${LINK_BASE_URL}/jobschedule.aspx?jobid=${id}&tab=divInvoice)`;
     })
     .replace(/\[\[\[JobGroupId:(\d+)\]\]\]/g, (_, id) => {
-      return `[${id}](${LINK_BASE_URL}/jobschedule.aspx?jobid=${id}&tab=divInvoice)`;
+      return `[${id}](${LINK_BASE_URL}/jobschedule.aspx?jobgroupid=${id})`;
     });
 };
