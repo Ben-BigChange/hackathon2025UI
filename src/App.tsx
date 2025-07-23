@@ -5,6 +5,7 @@ import ChatMessages from "./components/ChatMessages";
 import ChatInput from "./components/ChatInput";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<
     {
       sender: "user" | "bot";
@@ -19,6 +20,7 @@ function App() {
   }, [messages]);
 
   const sendMessage = async () => {
+    setIsLoading(true);
     if (!input.trim()) return;
     // Add user message
     setMessages((msgs) => [...msgs, { sender: "user", text: input }]);
@@ -43,6 +45,8 @@ function App() {
           text: "Sorry, there was an error contacting the bot.",
         },
       ]);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -54,7 +58,11 @@ function App() {
     <div className="min-h-screen flex items-center justify-center bg-greyblue">
       <div className="w-full max-w-2xl bg-white rounded-xl shadow-lg flex flex-col h-[80vh] border border-gray-200">
         <ChatHeader title="Job Finance Helper" />
-        <ChatMessages messages={messages} messagesEndRef={messagesEndRef} />
+        <ChatMessages
+          messages={messages}
+          messagesEndRef={messagesEndRef}
+          isThinking={isLoading}
+        />
         <ChatInput
           value={input}
           onChange={(e) => setInput(e.target.value)}
